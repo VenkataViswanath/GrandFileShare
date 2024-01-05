@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand File Storage App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Welcome to the Grand File Storage App</h1>
+	    <h2>This is a test application. Please don't upload any sensitive files into this platform. This application and all it's resources will be deleted after the assignment</h2>
+            <p>Share and download files effortlessly with our secure and user-friendly platform.</p>
+        </div>
+    </header>
+
+    <section class="file-list">
+        <div class="file-list-content">
+            <h2>Shared Files</h2>
+            <p>Explore the files shared by others in the community. Click on the file name to download.</p>
+            <ul>
+                {% for file in files %}
+                    <li>
+                        <span class="file-name">{{ file[0] }}</span>
+                        <a class="download-link" href="{{ url_for('download_file', filename=file[0]) }}">Download</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <section class="upload-section">
+        <div class="upload-section-content">
+            <h2>Upload a File</h2>
+            <p>Contribute to the community by uploading your files. Share knowledge, documents, or anything you find valuable.</p>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" class="file-input">
+                <input type="submit" value="Upload" class="upload-button">
+            </form>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-section-content">
+            <h2>About the Grand File Storage App</h2>
+            <p>Our mission is to provide a seamless and secure platform for sharing files. Whether you're a student, professional, or enthusiast, this app is designed to make file sharing a breeze.</p>
+            <p>Key Features:</p>
+            <ul>
+                <li>Secure file uploads and downloads</li>
+                <li>User-friendly interface</li>
+                <li>Community-driven sharing</li>
+                <li>Efficient file management</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Grand File Storage App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
